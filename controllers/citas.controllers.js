@@ -10,3 +10,20 @@ export const postCitas = async (req, res) => {
   await citas.save();
   return res.json(citas);
 };
+
+export const putCitas = async (req, res) => {
+  const updateCitas = await Citas.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  return res.json(updateCitas);
+};
+
+export const deleteCitas = async (req, res) => {
+  const deletedTask = await Citas.findByIdAndDelete(req.params.id);
+  if (!deletedTask)
+    return res.status(404).json({ message: "Citas not found" });
+  return res.json({
+    message: "Citas Eliminate",
+    result: deletedTask,
+  });
+};
