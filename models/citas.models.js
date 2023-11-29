@@ -6,6 +6,8 @@ const CitasSchema = new mongoose.Schema(
     fecha: String,
     motivo: String,
     hora: String,
+    telefono: String,
+    pago: String,
     status: String,
   },
   {
