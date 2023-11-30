@@ -9,6 +9,8 @@ const CitasSchema = new mongoose.Schema(
     telefono: String,
     pago: String,
     status: String,
+    count: String,
+    idCount: String,
   },
   {
     timestamps: true,
