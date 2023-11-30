@@ -7,6 +7,11 @@ export const getCitas = async (req, res) => {
 
 export const postCitas = async (req, res) => {
   const citas = new Citas(req.body);
+
+  const existe = await Citas.exists({fecha: req.body.fecha,hora: req.body.hora});
+  if(existe){
+    return res.status(400).json({mensaje: 'Ya esta ocupado'})
+  }
   await citas.save();
   return res.json(citas);
 };
